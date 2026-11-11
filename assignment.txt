@@ -26,3 +26,244 @@ task: terraform
 
 4. explore how to runn the terraform code using git hub actions(optional)
 
+27th oct
+
+Python assignment 
+
+task 1: create a python script to create a excel file and input the information for user name, age, phone number, address
+        step 2: store that information in excel file. 
+        step 3: read the excel file and store the information into my sql database
+   (note* try to create script with concept of module, packages)
+        step 4: create front page through which you will upload the excel and it will store the data on my sql
+
+############## 28th oct #####################
+
+# Jenkins Hands-On Assignments: CI/CD and Infrastructure Automation
+
+## Task 1: Jenkins Pipeline Using a Private GitHub Repository
+
+**Objective:** Integrate Jenkins with a private GitHub repository and execute a pipeline defined in a `Jenkinsfile`.
+
+**Requirements:**
+1. Create a private repository on GitHub.
+2. Create a `Jenkinsfile` containing the pipeline stages and push it to the repository.
+3. Configure Jenkins credentials to securely access the private repository.
+4. Create a Jenkins Pipeline job and configure it to retrieve the `Jenkinsfile` from the repository.
+5. Execute the pipeline and verify that all stages run successfully.
+
+**Expected Outcome:** Jenkins should securely fetch the `Jenkinsfile` from the private GitHub repository and execute the defined pipeline.
+
+## Task 2: Create a Parameterized Terraform Infrastructure Pipeline
+
+**Objective:** Build a Jenkins pipeline that allows users to select Terraform actions at runtime.
+
+**Requirements:**
+1. Create a Jenkins pipeline for Terraform infrastructure management.
+2. Add a user input parameter named `ACTION` with the following options:
+   - `init`
+   - `plan`
+   - `apply`
+   - `destroy`
+3. Configure the pipeline to execute the corresponding Terraform commands based on the selected action.
+4. Ensure that `terraform apply` and `terraform destroy` require appropriate approval before execution.
+5. Configure the pipeline to display the execution status and handle failures appropriately.
+6. Store cloud credentials securely using Jenkins Credentials rather than hardcoding secrets in the pipeline.
+
+**Expected Outcome:** Users should be able to select a Terraform action when starting the Jenkins job, and the pipeline should execute the appropriate operation.
+
+## Task 3: Provision an Azure Virtual Machine and Configure a Jenkins Agent
+
+**Objective:** Use Terraform and Jenkins to provision an Azure virtual machine and configure it as a Jenkins build agent.
+
+**Requirements:**
+1. Write Terraform configuration files to provision an Azure virtual machine and its required networking resources.
+2. Store the Terraform code in a GitHub repository.
+3. Create a Jenkins pipeline that retrieves the Terraform code and provisions the infrastructure.
+4. Verify that the Azure virtual machine has been created successfully and is running.
+5. Configure the virtual machine with the prerequisites required for a Jenkins agent, including a compatible Java runtime if needed.
+6. Establish a secure connection between the Jenkins controller and the new agent.
+7. Configure the agent in Jenkins and verify that it is online.
+8. Execute a test pipeline on the new agent to confirm that it can run build jobs successfully.
+9. Document the process for cleaning up the infrastructure when it is no longer required.
+
+**Expected Outcome:** A Jenkins pipeline should provision an Azure virtual machine using Terraform, configure it as a Jenkins agent, and demonstrate successful job execution on that agent.
+
+## General Guidelines
+
+- Use GitHub for version control and maintain a clear repository structure.
+- Use Jenkins Credentials or an approved secret-management solution for sensitive information.
+- Follow infrastructure-as-code best practices and avoid hardcoding environment-specific values.
+- Include validation, error handling, and execution logs in your pipelines.
+- Document the implementation steps, configuration, and final results.
+- Ensure that temporary Azure resources are destroyed after testing to avoid unnecessary costs.
+
+######### 3rd november ################
+
+# Advanced Docker Assignment: Build and Deploy a Multi-Tier Application
+
+**Scenario:**
+
+You are working as a DevOps Engineer in an organization that wants to deploy a multi-tier application using Docker. Your responsibility is to containerize the application, configure networking and persistent storage, optimize Docker images, and manage all services using Docker Compose.
+
+## Task 1: Create Application Dockerfiles
+
+1. Create a Java Spring Boot application with a Maven build.
+2. Create a Dockerfile for the backend application.
+3. Create a separate Dockerfile for the frontend using Nginx.
+4. Create a Dockerfile for the database if using a custom database configuration.
+5. Ensure each Dockerfile follows appropriate best practices.
+6. Use CMD and ENTRYPOINT wherever appropriate.
+
+## Task 2: Implement Multi-Stage Docker Builds
+
+1. Modify the backend Dockerfile to implement a multi-stage build.
+2. Use Maven and JDK in the builder stage to generate the JAR file.
+3. Use a lightweight Java JRE image in the runtime stage.
+4. Ensure Maven and unnecessary build dependencies are not included in the final image.
+5. Create another single-stage Dockerfile for the same application.
+6. Build both images and compare their sizes.
+
+**Challenge:** Optimize the final image size without affecting application functionality.
+
+## Task 3: Configure Docker Networking
+
+1. Create at least two custom bridge networks.
+2. Configure frontend and backend communication through the appropriate network.
+3. Configure a separate database network.
+4. Ensure the frontend cannot directly communicate with the database.
+5. Use container names or Docker service names instead of hardcoded IP addresses.
+6. Verify connectivity using Docker networking commands.
+
+**Challenge:** Disconnect a container from its network and troubleshoot the communication issue.
+
+## Task 4: Configure Docker Volumes and Persistent Storage
+
+1. Create a named volume for the MySQL database.
+2. Mount the named volume to the appropriate database directory.
+3. Configure a bind mount for application configuration files.
+4. Insert sample records into the database.
+5. Stop and remove the database container.
+6. Recreate the database container and verify that the records are still available.
+7. Take a database backup and demonstrate the restore process.
+
+**Challenge:** Demonstrate data recovery after deleting and recreating a container.
+
+## Task 5: Implement Docker Compose
+
+1. Create a `docker-compose.yml` file to manage the frontend, backend, and database.
+2. Configure each service to use its respective Dockerfile.
+3. Configure custom networks.
+4. Configure named volumes and bind mounts.
+5. Use environment variables through a `.env` file.
+6. Configure service dependencies using `depends_on`.
+7. Implement health checks for the database and backend.
+8. Configure restart policies.
+9. Configure port mappings wherever required.
+
+**Challenge:** Start and stop the complete application using Docker Compose commands without manually managing individual containers.
+
+## Task 6: Image Management and Registry Integration
+
+1. Build Docker images for frontend and backend.
+2. Tag images using appropriate version numbers.
+3. Push images to Docker Hub or Nexus Repository.
+4. Pull the images from the registry on another machine.
+5. Run the application using the pulled images.
+
+**Challenge:** Implement version-based image tagging such as `v1`, `v2`, and `latest`.
+
+## Task 7: Container Security and Optimization
+
+1. Run application containers using non-root users wherever possible.
+2. Create a `.dockerignore` file.
+3. Avoid hardcoding credentials in Dockerfiles.
+4. Use environment variables or Docker secrets for sensitive configuration.
+5. Configure CPU and memory limits.
+6. Scan Docker images for vulnerabilities using an image scanning tool.
+7. Analyze and optimize image sizes.
+
+## Task 8: Troubleshooting and Production Scenarios
+
+Demonstrate the following scenarios:
+
+1. Backend cannot connect to the database. Identify and resolve the issue.
+2. Database container is deleted. Recover the application data.
+3. Backend container crashes. Configure and verify automatic restart.
+4. Frontend cannot communicate with the backend. Troubleshoot networking.
+5. A new application version is released. Deploy the new image without rebuilding the database.
+6. Demonstrate rollback to the previous application version if the new version fails.
+
+## Submission Requirements
+
+Students must submit:
+
+1. All Dockerfiles.
+2. `docker-compose.yml`.
+3. `.env.example` without actual credentials.
+4. Application source code.
+5. Docker network and volume configuration.
+6. Image build and registry commands.
+7. Screenshots of successful deployment and testing.
+8. Architecture diagram showing containers, networks, and volumes.
+9. Documentation of troubleshooting scenarios and their solutions.
+
+**Expected Outcome:**
+
+At the end of this assignment, you should be able to design, build, deploy, manage, troubleshoot, and optimize a multi-tier application using advanced Docker concepts.
+
+########### 4nov ##########
+kubernetes
+
+# Assignment: Deploy an Application on AKS Using Terraform, ACR, and Blue-Green Deployment
+
+**Objective:** Provision an Azure Kubernetes Service (AKS) cluster using Terraform, deploy a containerized application from Azure Container Registry (ACR), and implement a Blue-Green Deployment strategy to release a new application version.
+
+### Task 1: Provision the AKS Cluster Using Terraform
+- Write Terraform configuration files to provision an AKS cluster in Azure.
+- Configure the cluster with a minimum of **2 worker nodes**.
+- Initialize Terraform and execute the `plan` and `apply` commands.
+- Verify that the AKS cluster is successfully created and accessible.
+
+### Task 2: Build and Push the Application Image to ACR
+- Create a custom Docker image for your application.
+- You can either build a new application image or reuse the image created in the previous Docker assignment.
+- Create an Azure Container Registry (ACR), if one does not already exist.
+- Tag your Docker image appropriately and push it to ACR.
+- Verify that the image is available in your ACR repository.
+
+### Task 3: Deploy the Application on AKS
+- Connect to your AKS cluster using `kubectl`.
+- Create Kubernetes manifest files to deploy your application using the image stored in ACR.
+- Configure the required Kubernetes resources, such as:
+  - Deployment
+  - Service
+- Apply the manifest files and verify that the application is deployed successfully.
+- Check the Pod status, Service configuration, and application accessibility.
+
+### Task 4: Implement Blue-Green Deployment for Application V2
+- Make changes to your application code and create a new version (**V2**).
+- Build a new Docker image with an updated version tag.
+- Push the V2 image to ACR.
+- Implement a **Blue-Green Deployment strategy** on AKS:
+  - **Blue:** Existing application version (V1).
+  - **Green:** New application version (V2).
+- Deploy V2 alongside V1 without interrupting the existing application.
+- Verify that V2 is working correctly.
+- Switch the Kubernetes Service traffic from V1 (Blue) to V2 (Green).
+- Validate that users are accessing V2 successfully.
+- Ensure you understand how to roll back to V1 if any issues occur.
+
+### Expected Outcome
+By completing this assignment, you should be able to:
+1. Provision an AKS cluster using Terraform.
+2. Build, tag, and push Docker images to Azure Container Registry.
+3. Deploy containerized applications on AKS using Kubernetes manifest files.
+4. Implement Blue-Green Deployment to release application updates with minimal downtime.
+5. Switch traffic between application versions and perform a rollback when required.
+
+**Submission Requirements:**
+- Terraform configuration files.
+- Dockerfile and application source code.
+- Kubernetes manifest files.
+- Screenshots of the AKS cluster, ACR repository, and running Pods.
+- Evidence of successful Blue-Green deployment, traffic switching, and rollback.
